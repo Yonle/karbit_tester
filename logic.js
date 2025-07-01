@@ -75,7 +75,7 @@ function askPertanyaan(q) { // q -> string
 
     str += q.shift()
     $("#pertanyaan").innerText = str
-  }, 70)
+  }, 40)
 }
 
 function showResult() {
