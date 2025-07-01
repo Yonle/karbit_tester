@@ -32,8 +32,10 @@ function answer(j) {
     case "Tidak":
       break
     case "Kadang":
+      calc(currentQuestion[1]*0.7) // 70%
+      break
     case "Jarang":
-      calc(currentQuestion[1]/2)
+      calc(currentQuestion[1]*0.3) // 30%
       break
   }
 
