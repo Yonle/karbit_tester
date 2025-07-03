@@ -34,13 +34,13 @@ table {
   margin-top: 20px;
 }
 
-#pertanyaandiv button {
-  font-size: 15pt;
-  margin-right: 5px;
+#jawabandiv button {
+  font-size: 12pt;
+  margin-right: 2px;
 }
 
 #pertanyaandiv #jawabandiv{
-  margin-top: 5vh;
+  margin-top: 20px;
 }
 
 #pertanyaandiv {

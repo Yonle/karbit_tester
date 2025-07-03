@@ -1,18 +1,11 @@
-let questions = [];
-let scores = [];
-
 let currentQuestion = [];
 
 let p = 0; // percent
-let totalQL = 0; // total question length
+let totalQL = questions.length; // total question length
 
 let tbl;
 
-window.onload = async () => {
-  questions = await fetch("questions.json").then(res => res.json())
-  scores = await fetch("scores.json").then(res => res.json())
-
-  totalQL = questions.length
+window.onload = () => {
   tbl = $("#tabelhasil")
 }
 
@@ -24,22 +17,19 @@ function mulai() {
   rollQ()
 }
 
-function answer(j) {
-  switch(j) {
-    case "Ya":
-      calc(currentQuestion[1])
-      break
-    case "Tidak":
-      break
-    case "Kadang":
-      calc(currentQuestion[1]*0.7) // 70%
-      break
-    case "Jarang":
-      calc(currentQuestion[1]*0.3) // 30%
-      break
-  }
+const multiplierMap = {
+  "Sering": 2.0,
+  "Ya": 1.0,
+  "Kadang": 0.7,
+  "Jarang": 0.3,
+  "Tidak": 0
+}
 
-  addToTable(currentQuestion[0], j)
+function answer(j) {
+  const multiplier = multiplierMap[j] ?? 0
+  calc(currentQuestion[0] * multiplier)
+
+  addToTable(currentQuestion[1], j)
   rollQ()
 }
 
@@ -50,13 +40,15 @@ function rollQ() {
   }
 
   let randomIndx = Math.floor(Math.random() * questions.length)
-  currentQuestion = questions[randomIndx]
+  let thisQuestion = questions[randomIndx]
+  let whichKind = Math.floor(Math.random() * (thisQuestion.length-1))
+  currentQuestion = [thisQuestion[0], thisQuestion[whichKind+1]]
 
   yeetQ(randomIndx)
 
   $("#no_pertanyaan").innerText = totalQL - questions.length
   $("#pertanyaandiv").classList.remove("hidden")
-  askPertanyaan(currentQuestion[0])
+  askPertanyaan(currentQuestion[1])
 }
 
 function askPertanyaan(q) { // q -> string

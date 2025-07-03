@@ -2,20 +2,22 @@
 <html lang="id">
   <head>
     <title>Karbit Tester</title>
-    <meta name="description" content="Tes Karbit dengan menjawab 20 pertanyaan">
+    <meta name="description" content="Tes Karbit dengan menjawab 24 pertanyaan">
     <link rel="preload" href="style.css" as="style">
-    <link rel="preload" href="questions.json" as="fetch">
-    <link rel="preload" href="scores.json" as="fetch">
+    <link rel="preload" href="questions.js" as="script">
+    <link rel="preload" href="scores.js" as="script">
     <link rel="preload" href="logic.js" as="script">
     <link rel="stylesheet" href="style.css">
     <meta name="viewport" content="width=device-width">
   </head>
+  <script src="questions.js"></script>
+  <script src="scores.js"></script>
   <script src="logic.js"></script>
   <body>
     <div id="title">
       <h1>Karbit Tester</h1>
       <small><i>Dimana hidup sudah terlalu karbit, Maka hadirlah karbit tester</i></small>
-      <p>Tes Karbit dengan menjawab 20 pertanyaan</p>
+      <p>Tes Karbit dengan menjawab 24 pertanyaan</p>
     </div>
     <div id="permulaan">
       <span>Mulai Tes?</span>
@@ -26,6 +28,7 @@
         <span id="no_pertanyaan">1</span></h2>
       <span id="pertanyaan">Sebuah pertanyaan</span><br>
       <div id="jawabandiv">
+        <button onclick="answer('Sering')">Sering</button>
         <button onclick="answer('Ya')">Ya</button>
         <button onclick="answer('Kadang')">Kadang</button>
         <button onclick="answer('Jarang')">Jarang</button>
